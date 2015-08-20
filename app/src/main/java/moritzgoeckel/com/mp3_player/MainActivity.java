@@ -1,7 +1,8 @@
 package moritzgoeckel.com.mp3_player;
 
-import android.support.v7.app.AppCompatActivity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -11,6 +12,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //http://www.javatpoint.com/playing-audio-in-android-example
+        MediaPlayer mp = new MediaPlayer();
+        try{
+            mp.setDataSource("/sdcard/Music/maine.mp3");
+            mp.prepare();
+            mp.start();
+
+        }catch(Exception e){e.printStackTrace();}
     }
 
     @Override
