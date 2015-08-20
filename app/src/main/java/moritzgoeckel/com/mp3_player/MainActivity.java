@@ -14,6 +14,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //http://www.javatpoint.com/playing-audio-in-android-example
+        //http://stackoverflow.com/questions/22323438/how-to-find-mp3-files-from-sdcard-in-android-programatically
+        //Find songs
+        //http://stackoverflow.com/questions/10209176/extract-album-cover-from-mp3-file-in-android?rq=1
         MediaPlayer mp = new MediaPlayer();
         try{
             mp.setDataSource("/sdcard/Music/maine.mp3");
