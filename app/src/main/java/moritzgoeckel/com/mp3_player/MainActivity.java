@@ -1,10 +1,12 @@
 package moritzgoeckel.com.mp3_player;
 
-import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,15 +17,32 @@ public class MainActivity extends AppCompatActivity {
 
         //http://www.javatpoint.com/playing-audio-in-android-example
         //http://stackoverflow.com/questions/22323438/how-to-find-mp3-files-from-sdcard-in-android-programatically
+
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                try {
+
+                    List<String> paths = MediaFileFinder.getMediaFiles(Environment.getExternalStorageDirectory().getAbsolutePath());
+                    paths.size();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        thread.start();
+
         //Find songs
         //http://stackoverflow.com/questions/10209176/extract-album-cover-from-mp3-file-in-android?rq=1
-        MediaPlayer mp = new MediaPlayer();
+        /*MediaPlayer mp = new MediaPlayer();
         try{
             mp.setDataSource("/sdcard/Music/maine.mp3");
             mp.prepare();
             mp.start();
 
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){e.printStackTrace();}*/
     }
 
     @Override
